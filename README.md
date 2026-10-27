@@ -127,8 +127,6 @@ No Windows, os dados ficam no diretório de dados do usuário, configurado para 
 
 O RetroNexus está focado em organizar e executar jogos que o usuário já possui.
 
-Nesta versão, o aplicativo **não baixa, instala ou atualiza jogos automaticamente**. A integração com catálogos externos, incluindo PortsDR e GitHub, poderá ser considerada em versões futuras.
-
 O projeto não inclui jogos, ROMs ou ISOs. Cada jogo permanece sob os direitos e as condições de distribuição de seus respectivos responsáveis.
 
 ## 🧰 Tecnologias
