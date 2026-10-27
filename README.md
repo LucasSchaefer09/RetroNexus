@@ -21,6 +21,7 @@ O RetroNexus mantém sua biblioteca e suas preferências armazenadas localmente,
 
 <img width="1419" height="887" alt="image" src="https://github.com/user-attachments/assets/1511480a-6fb4-4e2c-99d1-ad2b91cd6b0d" />
 
+<img width="1416" height="885" alt="image" src="https://github.com/user-attachments/assets/d5e4f33f-ee81-4467-8493-41c90e57eb06" />
 
 ## 🖥️ Plataformas
 
