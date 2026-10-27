@@ -19,7 +19,7 @@ O RetroNexus mantém sua biblioteca e suas preferências armazenadas localmente,
 - **Configurações persistentes:** suas preferências e registros ficam armazenados localmente.
 - **Suporte multiplataforma planejado:** arquitetura baseada em Electron para possibilitar a distribuição em Windows e Linux.
 
-<img width="1417" height="888" alt="image" src="https://github.com/user-attachments/assets/90bb1b04-edec-4c20-a236-5f34e20d2e77" />
+<img width="1419" height="887" alt="image" src="https://github.com/user-attachments/assets/1511480a-6fb4-4e2c-99d1-ad2b91cd6b0d" />
 
 
 ## 🖥️ Plataformas
