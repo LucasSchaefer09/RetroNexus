@@ -2,6 +2,7 @@
   "name": "retronexus",
   "version": "0.1.0",
   "private": true,
+  "license": "MIT",
   "description": "Uma biblioteca retrô para organizar, gerenciar e executar ports nativos de jogos. Disponível para Windows, com suporte a Linux em breve.",
   "main": "./out/main/index.js",
   "scripts": {

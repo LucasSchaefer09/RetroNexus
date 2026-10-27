@@ -6,6 +6,10 @@ O RetroNexus reúne em uma biblioteca local os jogos que você já possui. Cadas
 
 O projeto não baixa, instala nem remove jogos. Os registros e as preferências de aparência ficam salvos localmente no dispositivo.
 
+## Licença
+
+Este projeto é distribuído sob a licença [MIT](./LICENSE).
+
 ## Recursos
 
 - Cadastro, edição e remoção de jogos sem apagar os executáveis originais.
