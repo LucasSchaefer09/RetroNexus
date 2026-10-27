@@ -4,12 +4,7 @@ import { access, constants, stat } from 'node:fs/promises'
 import { isAbsolute, resolve, extname } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { deleteGame, initializeDatabase, listGames, markGamePlayed, saveGame, type GameInput } from './database'
-import {
-  getApplicationInfo,
-  getSettings,
-  isConfiguredProjectUrl,
-  saveSettings
-} from './preferences'
+import { getSettings, saveSettings } from './preferences'
 
 const preloadPath = fileURLToPath(new URL('../preload/index.js', import.meta.url))
 const rendererUrl = process.env.ELECTRON_RENDERER_URL
@@ -191,17 +186,6 @@ function registerIpc(): void {
   ipcMain.handle('settings:save', (event, settings: unknown) => {
     assertTrustedSender(event)
     return saveSettings(settings)
-  })
-  ipcMain.handle('app:info', (event) => {
-    assertTrustedSender(event)
-    return getApplicationInfo()
-  })
-  ipcMain.handle('app:open-project-url', async (event, value: unknown) => {
-    assertTrustedSender(event)
-    if (typeof value !== 'string' || !isConfiguredProjectUrl(value)) {
-      throw new Error('Este link não está configurado para o projeto.')
-    }
-    await shell.openExternal(value)
   })
   ipcMain.handle('library:list', (event) => {
     assertTrustedSender(event)

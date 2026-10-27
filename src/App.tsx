@@ -6,7 +6,7 @@ import {
 } from 'lucide-react'
 import { GameForm } from './GameForm'
 import { SettingsPage } from './SettingsPage'
-import { CONSOLES, type ApplicationInfo, type AppSettings, type Game, type GameInput } from './types'
+import { CONSOLES, type AppSettings, type Game, type GameInput } from './types'
 
 type Section = 'library' | 'favorites' | 'consoles' | 'settings'
 type SortMode = 'added' | 'name'
@@ -36,7 +36,6 @@ function App() {
   const [settings, setSettings] = useState<AppSettings>(defaultSettings)
   const settingsRef = useRef(defaultSettings)
   const settingsSaveQueue = useRef<Promise<void>>(Promise.resolve())
-  const [applicationInfo, setApplicationInfo] = useState<ApplicationInfo | null>(null)
   const [formGame, setFormGame] = useState<Game | undefined>()
   const [showForm, setShowForm] = useState(false)
   const [notice, setNotice] = useState('')
@@ -57,9 +56,6 @@ function App() {
         setLayout(savedSettings.defaultView)
       })
       .catch((error: unknown) => setNotice(error instanceof Error ? error.message : 'Falha ao carregar as preferências.'))
-    window.retroNexus.getApplicationInfo()
-      .then(setApplicationInfo)
-      .catch((error: unknown) => setNotice(error instanceof Error ? error.message : 'Falha ao carregar as informações do aplicativo.'))
   }, [])
 
   useEffect(() => {
@@ -107,14 +103,6 @@ function App() {
       await save
     } catch (error) {
       setNotice(error instanceof Error ? error.message : 'Não foi possível salvar as preferências.')
-    }
-  }
-
-  async function openProjectLink(url: string) {
-    try {
-      await window.retroNexus.openProjectUrl(url)
-    } catch (error) {
-      setNotice(error instanceof Error ? error.message : 'Não foi possível abrir o link.')
     }
   }
 
@@ -193,7 +181,7 @@ function App() {
         <div className="sidebar-bottom">
           <div className="community-card"><span className="community-icon"><Sparkles size={16} /></span><strong>Feito para quem joga</strong><p>Todas as gerações.<br />Uma comunidade.</p></div>
           <button className={section === 'settings' ? 'nav-item active' : 'nav-item'} onClick={() => chooseSection('settings')}><Settings size={18} /> Configurações</button>
-          <div className="sidebar-version">RETRO NEXUS <span>v{applicationInfo?.version ?? '...'}</span></div>
+          <div className="sidebar-version">RETRO NEXUS <span>v0.1.0</span></div>
         </div>
       </aside>
 
@@ -209,7 +197,7 @@ function App() {
 
         <div className="content">
           {section === 'settings' ? (
-            <SettingsPage settings={settings} applicationInfo={applicationInfo} onChange={(changes) => updateSettings(changes)} onOpenLink={(url) => void openProjectLink(url)} />
+            <SettingsPage settings={settings} onChange={(changes) => updateSettings(changes)} />
           ) : section === 'consoles' && !consoleFilter ? (
             <section className="consoles-page">
               <div className="page-title-row"><div><p className="eyebrow">ORGANIZE POR GERAÇÃO</p><h1>Consoles</h1><p className="page-subtitle">Escolha uma plataforma para explorar seus jogos.</p></div></div>

@@ -9,7 +9,6 @@ type Props = {
 }
 
 const emptyGame = (): GameInput => ({
-  id: 0,
   name: '',
   console: CONSOLES[0],
   description: '',

@@ -34,23 +34,11 @@ export type AppSettings = {
   defaultView: 'grid' | 'list'
 }
 
-export type ApplicationInfo = {
-  name: string
-  version: string
-  platform: string
-  electronVersion: string
-  credits: Array<{ name: string; version: string; license: string }>
-  repositoryUrl?: string
-  issuesUrl?: string
-}
-
 declare global {
   interface Window {
     retroNexus: {
       getSettings: () => Promise<AppSettings>
       saveSettings: (settings: AppSettings) => Promise<AppSettings>
-      getApplicationInfo: () => Promise<ApplicationInfo>
-      openProjectUrl: (url: string) => Promise<void>
       listGames: () => Promise<Game[]>
       saveGame: (game: GameInput) => Promise<Game[]>
       deleteGame: (id: number) => Promise<Game[]>

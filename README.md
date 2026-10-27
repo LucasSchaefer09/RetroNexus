@@ -64,7 +64,7 @@ No Windows, também é possível gerar o executável portátil com o ícone Retr
 npm run dist:portable
 ```
 
-O ícone de Windows fica em `build/icon.ico`; o PNG correspondente é usado pelo Linux e pela tela “Sobre”. Preferências de aparência são gravadas separadamente em `settings.json`, dentro do diretório de dados de usuário.
+O ícone de Windows fica em `build/icon.ico`; o PNG correspondente é usado nos pacotes Linux. Preferências de aparência são gravadas separadamente em `settings.json`, dentro do diretório de dados de usuário.
 
 ## Uso
 

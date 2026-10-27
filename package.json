@@ -43,7 +43,6 @@
     "files": [
       "out/**/*",
       "package.json",
-      "package-lock.json",
       "build/icon.ico",
       "build/icon.png"
     ],
@@ -55,10 +54,6 @@
       {
         "from": "build/icon.png",
         "to": "icon.png"
-      },
-      {
-        "from": "package-lock.json",
-        "to": "package-lock.json"
       }
     ],
     "asar": true,

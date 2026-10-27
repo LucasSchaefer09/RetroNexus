@@ -229,27 +229,6 @@ button { cursor: pointer; }
 .choice-button.selected svg:last-child, .accent-choice.selected svg:last-child { color: var(--accent); }
 .text-choice { min-width: 76px; }
 .accent-choice > span { width: 10px; height: 10px; border-radius: 50%; box-shadow: 0 0 8px currentColor; }
-.about-section { margin-bottom: 30px; }
-.about-brand { display: flex; align-items: center; gap: 16px; margin-top: 17px; padding: 13px; border: 1px solid var(--line); border-radius: 9px; background: #11192a; }
-.about-brand img { width: 74px; height: 74px; object-fit: cover; border: 1px solid #4b3b76; border-radius: 9px; }
-.about-brand h3 { margin: 0; font: 600 16px 'Space Grotesk', sans-serif; }
-.about-brand p { margin: 5px 0; color: #a69abf; font-size: 10px; }
-.about-tagline { color: #8692aa; font-size: 9px; }
-.about-facts { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 13px; }
-.about-facts > div { display: flex; flex-direction: column; gap: 6px; padding: 12px; border: 1px solid var(--line); border-radius: 7px; background: #11192a; }
-.about-facts span { color: #78849b; font-size: 7px; font-weight: 700; letter-spacing: .9px; }
-.about-facts strong { color: #cbd2e2; font-size: 9px; font-weight: 500; }
-.about-links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
-.about-links > p { margin: 0; color: #8995ac; font-size: 9px; }
-.about-link { display: inline-flex; align-items: center; gap: 6px; padding: 7px 9px; border: 1px solid #38445c; border-radius: 6px; background: #101829; color: #b6c1d5; font-size: 9px; }
-.about-link:hover { border-color: var(--accent); color: var(--accent); }
-.license-details { margin-top: 13px; border: 1px solid var(--line); border-radius: 7px; background: #11192a; }
-.license-details summary { display: flex; justify-content: space-between; align-items: center; gap: 8px; padding: 11px 12px; color: #c6cede; font-size: 9px; font-weight: 600; cursor: pointer; }
-.license-details summary span { color: #7f8ba2; font-size: 8px; font-weight: 400; }
-.license-list { max-height: 240px; overflow-y: auto; margin: 0; padding: 0 12px 10px; list-style: none; }
-.license-list li { display: grid; grid-template-columns: 1fr 90px 100px; gap: 10px; padding: 7px 0; border-top: 1px solid var(--line); color: #929db2; font-size: 8px; }
-.license-list li strong { color: #c8d0df; font-weight: 500; }
-.license-loading { margin: 0; padding: 0 12px 12px; color: #8995ac; font-size: 9px; }
 .page-title-row { margin: 10px 0 22px; }
 .page-subtitle { margin: 7px 0 0; color: #8c97ad; font-size: 11px; }
 .platform-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 11px; }
@@ -341,9 +320,6 @@ html[data-theme='light'] .preferences-heading h2, html[data-theme='light'] .pref
 html[data-theme='light'] .preferences-heading p, html[data-theme='light'] .preference-copy p { color: #707d94; }
 html[data-theme='light'] .choice-button, html[data-theme='light'] .accent-choice, html[data-theme='light'] .about-link { border-color: #d6dce7; background: #f6f7fb; color: #56627a; }
 html[data-theme='light'] .choice-button.selected, html[data-theme='light'] .accent-choice.selected { background: color-mix(in srgb, var(--accent) 10%, white); }
-html[data-theme='light'] .about-brand, html[data-theme='light'] .about-facts > div, html[data-theme='light'] .license-details { border-color: #dfe3eb; background: #f7f8fc; }
-html[data-theme='light'] .about-brand h3, html[data-theme='light'] .about-facts strong, html[data-theme='light'] .license-details summary, html[data-theme='light'] .license-list li strong { color: #303b51; }
-html[data-theme='light'] .about-brand p, html[data-theme='light'] .about-tagline, html[data-theme='light'] .about-facts span, html[data-theme='light'] .license-details summary span, html[data-theme='light'] .license-list li, html[data-theme='light'] .about-links > p { color: #68758c; }
 html[data-theme='light'] .game-modal { border-color: #d5dce8; background: #fff; }
 html[data-theme='light'] .modal-header h2, html[data-theme='light'] .field { color: #354158; }
 html[data-theme='light'] .field input, html[data-theme='light'] .field select, html[data-theme='light'] .field textarea { border-color: #d4dbe7; background: #f8f9fc; color: #28334a; }
