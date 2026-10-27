@@ -1,5 +1,5 @@
 
-<img width="640" height="480" alt="Gemini_Generated_Image_xai731xai731xai7" src="https://github.com/user-attachments/assets/5c36899d-d133-468b-a3ab-1562d28c3173" />
+<img width="480" height="480" alt="Gemini_Generated_Image_xai731xai731xai7" src="https://github.com/user-attachments/assets/5c36899d-d133-468b-a3ab-1562d28c3173" />
 
 ## 🎮 Sobre o RetroNexus
 
