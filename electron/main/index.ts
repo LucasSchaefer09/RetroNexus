@@ -1,6 +1,7 @@
 import { app, BrowserWindow, dialog, ipcMain, Menu, shell, type IpcMainInvokeEvent } from 'electron'
 import { spawn } from 'node:child_process'
-import { access, constants, stat } from 'node:fs/promises'
+import { access, constants, mkdir, readFile, rename, stat, writeFile } from 'node:fs/promises'
+import { randomUUID } from 'node:crypto'
 import { isAbsolute, resolve, extname } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { deleteGame, initializeDatabase, listGames, markGamePlayed, saveGame, type GameInput } from './database'
@@ -218,7 +219,46 @@ function registerIpc(): void {
       properties: ['openFile'],
       filters: [{ name: 'Imagens', extensions: ['png', 'jpg', 'jpeg', 'webp', 'gif'] }]
     })
-    return result.canceled ? null : result.filePaths[0]
+    if (result.canceled) return null
+    const path = result.filePaths[0]
+    const file = await stat(path)
+    if (file.size > 40 * 1024 * 1024) throw new Error('A imagem deve ter no máximo 40 MB.')
+    const mimeTypes: Record<string, string> = {
+      '.png': 'image/png',
+      '.jpg': 'image/jpeg',
+      '.jpeg': 'image/jpeg',
+      '.webp': 'image/webp',
+      '.gif': 'image/gif'
+    }
+    const mimeType = mimeTypes[extname(path).toLowerCase()]
+    if (!mimeType) throw new Error('Formato de imagem não suportado.')
+    const image = await readFile(path)
+    return { path, dataUrl: `data:${mimeType};base64,${image.toString('base64')}` }
+  })
+  ipcMain.handle('cover:save-crop', async (event, value: unknown) => {
+    assertTrustedSender(event)
+    if (typeof value !== 'string' || value.length > 16 * 1024 * 1024) {
+      throw new Error('A imagem recortada é inválida ou muito grande.')
+    }
+    const match = /^data:image\/png;base64,([A-Za-z0-9+/]+={0,2})$/.exec(value)
+    if (!match) throw new Error('A imagem recortada deve estar no formato PNG.')
+    const image = Buffer.from(match[1], 'base64')
+    if (image.length < 20 || image.length > 12 * 1024 * 1024 ||
+      image.subarray(0, 8).toString('hex') !== '89504e470d0a1a0a' ||
+      image.subarray(-8, -4).toString('ascii') !== 'IEND') {
+      throw new Error('Os dados da imagem recortada são inválidos.')
+    }
+    const coversDirectory = resolve(app.getPath('userData'), 'covers')
+    await mkdir(coversDirectory, { recursive: true })
+    const path = resolve(coversDirectory, `${randomUUID()}.png`)
+    const temporaryPath = `${path}.tmp`
+    try {
+      await writeFile(temporaryPath, image, { flag: 'wx' })
+      await rename(temporaryPath, path)
+    } catch (error) {
+      throw new Error(`Não foi possível salvar a capa: ${error instanceof Error ? error.message : String(error)}`)
+    }
+    return path
   })
   ipcMain.handle('dialog:directory', async (event) => {
     assertTrustedSender(event)

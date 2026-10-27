@@ -10,7 +10,8 @@ const api = {
   deleteGame: (id: number): Promise<Game[]> => ipcRenderer.invoke('library:delete', id),
   launchGame: (id: number): Promise<void> => ipcRenderer.invoke('library:launch', id),
   selectExecutable: (): Promise<string | null> => ipcRenderer.invoke('dialog:executable'),
-  selectCover: (): Promise<string | null> => ipcRenderer.invoke('dialog:cover'),
+  selectCover: (): Promise<{ path: string; dataUrl: string } | null> => ipcRenderer.invoke('dialog:cover'),
+  saveCoverCrop: (dataUrl: string): Promise<string> => ipcRenderer.invoke('cover:save-crop', dataUrl),
   selectDirectory: (): Promise<string | null> => ipcRenderer.invoke('dialog:directory')
 }
 

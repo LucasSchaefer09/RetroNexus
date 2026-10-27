@@ -15,6 +15,7 @@ O RetroNexus mantém sua biblioteca e suas preferências armazenadas localmente,
 - **Pesquisa e filtros:** encontre jogos pelo nome, console ou favoritos.
 - **Visualização flexível:** escolha entre grade de cartões ou lista.
 - **Personalização visual:** alterne entre os temas claro e escuro, escolha a cor de destaque e ajuste o tamanho dos cartões.
+- **Idioma da interface:** escolha entre Português (Brasil) e English nas configurações.
 - **Configurações persistentes:** suas preferências e registros ficam armazenados localmente.
 - **Suporte multiplataforma planejado:** arquitetura baseada em Electron para possibilitar a distribuição em Windows e Linux.
 

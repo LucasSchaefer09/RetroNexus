@@ -7,13 +7,15 @@ export type AppSettings = {
   accent: 'purple' | 'cyan' | 'magenta'
   cardSize: 'small' | 'medium' | 'large'
   defaultView: 'grid' | 'list'
+  language: 'pt-BR' | 'en'
 }
 
 const defaultSettings: AppSettings = {
   theme: 'dark',
   accent: 'purple',
   cardSize: 'medium',
-  defaultView: 'grid'
+  defaultView: 'grid',
+  language: 'pt-BR'
 }
 
 const settingsPath = () => join(app.getPath('userData'), 'settings.json')
@@ -25,6 +27,7 @@ function isAppSettings(value: unknown): value is AppSettings {
     && (settings.accent === 'purple' || settings.accent === 'cyan' || settings.accent === 'magenta')
     && (settings.cardSize === 'small' || settings.cardSize === 'medium' || settings.cardSize === 'large')
     && (settings.defaultView === 'grid' || settings.defaultView === 'list')
+    && (settings.language === undefined || settings.language === 'pt-BR' || settings.language === 'en')
 }
 
 export function getSettings(): AppSettings {
@@ -33,7 +36,7 @@ export function getSettings(): AppSettings {
   if (!existsSync(path)) return { ...defaultSettings }
   const parsed: unknown = JSON.parse(readFileSync(path, 'utf8'))
   if (!isAppSettings(parsed)) throw new Error('O arquivo de configurações está inválido. Corrija ou remova settings.json para restaurar os padrões.')
-  return parsed
+  return { ...defaultSettings, ...parsed }
 }
 
 export function saveSettings(value: unknown): AppSettings {

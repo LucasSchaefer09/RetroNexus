@@ -1,5 +1,5 @@
 export const CONSOLES = [
-  'PlayStation 1', 'PlayStation 2', 'PlayStation 3', 'PSP', 'PS Vita',
+  'PlayStation 1', 'PlayStation 2', 'PlayStation 3', 'PlayStation 4', 'PlayStation 5', 'PSP', 'PS Vita',
   'Master System', 'Mega Drive / Genesis', 'Sega Saturn', 'Dreamcast',
   'NES', 'SNES', 'Nintendo 64', 'Game Boy', 'Game Boy Color', 'Game Boy Advance',
   'Nintendo DS', 'Nintendo 3DS', 'GameCube', 'Wii', 'Wii U', 'Xbox', 'Xbox 360',
@@ -32,6 +32,7 @@ export type AppSettings = {
   accent: 'purple' | 'cyan' | 'magenta'
   cardSize: 'small' | 'medium' | 'large'
   defaultView: 'grid' | 'list'
+  language: 'pt-BR' | 'en'
 }
 
 declare global {
@@ -44,7 +45,8 @@ declare global {
       deleteGame: (id: number) => Promise<Game[]>
       launchGame: (id: number) => Promise<void>
       selectExecutable: () => Promise<string | null>
-      selectCover: () => Promise<string | null>
+      selectCover: () => Promise<{ path: string; dataUrl: string } | null>
+      saveCoverCrop: (dataUrl: string) => Promise<string>
       selectDirectory: () => Promise<string | null>
     }
   }
